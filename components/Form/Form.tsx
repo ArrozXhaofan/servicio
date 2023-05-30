@@ -8,7 +8,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 type Inputs = {
   cliente:string,
   impresora:string,
-  telefono:string
+  telefono:string,
+  foto1:string,
+  foto2:string,
+  video:string
 };
 
 export default function Form() {
@@ -57,7 +60,7 @@ export default function Form() {
                 hover:border-white hover:text-white duration-300 ease-in-out active:border-white active:text-white">
                     Foto 1 <BsCloudDownload/>
                 </span>
-                <input {...register("foto1",{validate:true})}  
+                <input {...register("foto1",{minLength:2})}  
                 type="file" className='absolute top-0 w-full h-full opacity-0 group-hover:cursor-pointer'/>
             </div>
             <div className="relative text-white">
@@ -65,7 +68,7 @@ export default function Form() {
                 hover:border-white hover:text-white duration-300 ease-in-out active:border-white active:text-white">
                     Foto 2 <BsCloudDownload/>
                 </span>
-                <input {...register("foto2",{validate:true})}  
+                <input {...register("foto2",{minLength:2})}  
                 type="file" className='absolute top-0 w-full h-full opacity-0' />
             </div>
             <div className="relative text-white">
@@ -73,7 +76,7 @@ export default function Form() {
                 hover:border-white hover:text-white duration-300 ease-in-out active:border-white active:text-white">
                     Video  <BsCloudDownload/>
                 </span>
-                <input {...register("video",{validate:true})}  
+                <input {...register("video",{minLength:2})}  
                 type="file" className='absolute top-0 w-full h-full opacity-0' />
 
             </div>
