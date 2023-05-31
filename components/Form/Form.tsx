@@ -93,10 +93,18 @@ export default function Form() {
         
         </div>
         
-        <div className='pt-10'>
+        <div className='pt-14'>
             <p className='text-white text-center'>
                 Tu solicitud será revisada por un técnico y se comunicara contigo en unos minutos.
             </p>
+        </div>
+
+        <div className='flex justify-center text-center px-10 pt-5'>
+          <span className='text-sm text-green-500 duration-500'>
+            {
+              msj
+            }
+          </span>
         </div>
 
         <button 
@@ -104,13 +112,7 @@ export default function Form() {
             <SlArrowRightCircle/>
         </button>
 
-        <div className='flex justify-center text-center'>
-          <span className='text-sm text-green-500'>
-            {
-              msj
-            }
-          </span>
-        </div>
+       
         
 
       </form>
