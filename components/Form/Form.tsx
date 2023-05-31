@@ -4,22 +4,31 @@ import {BsCloudDownload } from 'react-icons/bs'
 import {SlArrowRightCircle} from 'react-icons/sl'
 
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from 'react';
 
 type Inputs = {
   cliente:string,
   impresora:string,
   telefono:string,
-  foto1:string,
-  foto2:string,
-  video:string
+  foto1:FileList,
+  foto2:FileList,
+  video:FileList
 };
 
 export default function Form() {
 
+    const [msj, setMsj] = useState('')
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = data => {
 
-      alert(`Solicitud de soporte tecnico enviado ${data.cliente}`)
+      setMsj(`
+      Hola ${data.cliente} con impresora: ${data.impresora}
+      su solicitud sera revisada con un tecnico y se comunicara
+      con ud.
+      `)
+
+      alert("Solicitud enviada correctamente")
 
     }
 
@@ -55,7 +64,7 @@ export default function Form() {
             Asegúrese que las fotos y video muestren correctamente el problema de la impresora
             </p>
 
-            <div className="relative text-white">
+            <div className="relative text-white overflow-hidden">
                 <span className="cursor-pointer p-2 border-[0.5px] border-[#6B6B6B] text-[#B3B3B3] rounded flex items-center gap-4 z-20
                 hover:border-white hover:text-white duration-300 ease-in-out active:border-white active:text-white">
                     Foto 1 <BsCloudDownload/>
@@ -91,10 +100,18 @@ export default function Form() {
         </div>
 
         <button 
-            className='flex justify-center text-blue-500 text-7xl hover:text-orange-600 duration-500 ease-in-out hover:scale-75'>
+            className='flex justify-center text-blue-500 text-7xl hover:text-green-600 duration-500 ease-in-out hover:scale-75'>
             <SlArrowRightCircle/>
         </button>
 
+        <div className='flex justify-center text-center'>
+          <span className='text-sm text-green-500'>
+            {
+              msj
+            }
+          </span>
+        </div>
+        
 
       </form>
     </div>
